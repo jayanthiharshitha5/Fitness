@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#647d68">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <title>For Maa, With Love 💛</title>
+    <style>
+        :root {
+            --bg: #fff8f3;
+            --card: #fffdfb;
+            --ink: #49353b;
+            --muted: #927a80;
+            --green: #7a9276;
+            --pale: #edf3e8;
+            --line: #f0dfdf;
+            --peach: #fff0f0;
+            --rose: #d98e9b;
+            --lav: #f4effa
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: radial-gradient(circle at 8% 8%, #fff0f1 0, transparent 28%), radial-gradient(circle at 95% 20%, #f0f4e9 0, transparent 25%), var(--bg);
+            color: var(--ink);
+            font: 16px/1.55 system-ui, -apple-system, Segoe UI, sans-serif
+        }
+
+        header {
+            padding: 32px 18px 28px;
+            background: linear-gradient(135deg, #ffe7eb 0%, #fff7ee 48%, #eaf1e5 100%);
+            border-bottom: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        header:after {
+            content: "♡  ✦  ♡";
+            position: absolute;
+            right: 6%;
+            top: 20px;
+            font-size: 2rem;
+            letter-spacing: .3em;
+            color: #d98e9b;
+            opacity: .6;
+            transform: rotate(8deg)
+        }
+
+        .wrap {
+            max-width: 900px;
+            margin: auto;
+            padding: 0 14px
+        }
+
+        .eyebrow {
+            font-size: .72rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--green)
+        }
+
+        h1 {
+            font-size: clamp(2rem, 7vw, 3rem);
+            line-height: 1.05;
+            margin: 8px 0
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin: 0 0 12px
+        }
+
+        h3 {
+            margin: 4px 0 8px;
+            font-size: 1.03rem
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .pills {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap
+        }
+
+        .pill {
+            background: var(--pale);
+            color: #38553d;
+            border-radius: 99px;
+            padding: 5px 10px;
+            font-size: .78rem;
+            font-weight: 700
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 14px;
+            margin: 18px 0
+        }
+
+        .card {
+            background: rgba(255, 253, 251, .94);
+            border: 1px solid var(--line);
+            border-radius: 23px;
+            padding: 18px;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 24px rgba(116, 76, 85, .055)
+        }
+
+        .quote {
+            background: linear-gradient(135deg, #fff0f2, #fff7ec);
+            padding: 15px;
+            border: 1px solid #f8dfe3;
+            border-radius: 17px;
+            font-weight: 700;
+            color: #875763
+        }
+
+        .btn {
+            border: 0;
+            background: linear-gradient(135deg, #82977b, #647d68);
+            color: white;
+            border-radius: 14px;
+            padding: 11px 15px;
+            font: inherit;
+            font-weight: 750;
+            cursor: pointer;
+            box-shadow: 0 4px 10px #647d6825
+        }
+
+        .btn.alt {
+            background: var(--pale);
+            color: var(--ink)
+        }
+
+        .tabs {
+            display: flex;
+            gap: 7px;
+            overflow: auto;
+            margin-bottom: 14px
+        }
+
+        .tab {
+            white-space: nowrap;
+            border: 1px solid var(--line);
+            background: var(--card);
+            border-radius: 99px;
+            padding: 9px 14px;
+            font: inherit;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: var(--green);
+            color: white
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        .meal {
+            display: grid;
+            grid-template-columns: 42px 1fr auto;
+            gap: 10px;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .meal:last-child {
+            border: 0
+        }
+
+        .emoji {
+            height: 44px;
+            width: 44px;
+            background: linear-gradient(135deg, #fff0f0, #edf3e8);
+            border-radius: 15px;
+            display: grid;
+            place-items: center;
+            font-size: 1.3rem
+        }
+
+        .time {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        .check {
+            width: 22px;
+            height: 22px;
+            accent-color: var(--green)
+        }
+
+        .progress {
+            height: 8px;
+            background: #ece9e1;
+            border-radius: 99px;
+            overflow: hidden;
+            margin: 10px 0
+        }
+
+        .bar {
+            height: 100%;
+            background: var(--green);
+            width: 0
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px
+        }
+
+        .recipe {
+            border: 1px solid var(--line);
+            border-radius: 15px;
+            padding: 14px;
+            background: #fffefa
+        }
+
+        .tag {
+            font-size: .76rem;
+            color: var(--green);
+            font-weight: 800
+        }
+
+        ul {
+            padding-left: 20px
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #dcd8ce;
+            border-radius: 10px;
+            font: inherit;
+            margin: 5px 0 10px;
+            background: white
+        }
+
+        label {
+            font-size: .85rem;
+            font-weight: 700
+        }
+
+        .safe {
+            background: #fff5df;
+            border: 1px solid #ead5a4;
+            border-radius: 13px;
+            padding: 12px;
+            font-size: .88rem
+        }
+
+        .small {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            padding: 10px 0 25px
+        }
+
+        @media(max-width:640px) {
+
+            .hero,
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            .wrap {
+                padding: 0 11px
+            }
+
+            .card {
+                padding: 14px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="wrap">
+            <div class="eyebrow">A little care, every day ✨</div>
+            <h1>For My Baby(Maa), With Love 💛</h1>
+            <p class="muted">Tiny steps toward eating well, feeling stronger, and getting enough rest. Made with love,
+                just for you.</p>
+            <div class="pills"><span class="pill">No-fridge friendly pantry</span><span class="pill">Quick
+                    meals</span><span class="pill">One day at a time</span></div>
+        </div>
+    </header>
+    <main class="wrap">
+        <div class="hero">
+            <section class="card">
+                <div class="eyebrow">Today's little goal</div>
+                <h2 style="margin-top:8px">Eat regularly. Be kind to yourself.</h2>
+                <p class="muted">Tick off meals as you go. No pressure to be perfect.</p>
+                <div style="display:flex;justify-content:space-between"><span class="muted">Progress</span><b
+                        id="progressText">0 of 5</b></div>
+                <div class="progress">
+                    <div class="bar" id="bar"></div>
+                </div><button class="btn" id="reset">Reset today's checklist</button>
+            </section>
+            <section class="card">
+                <div class="eyebrow">A gentle reminder</div>
+                <h2 id="clock">One meal at a time 💛</h2>
+                <p class="muted" id="greeting">You deserve to be looked after, too.</p>
+                <div class="quote">“Please take care of the person I love most. ❤️”</div>
+                <p class="small">A little note from your favourite person.</p>
+            </section>
+        </div>
+        <nav class="tabs"><button class="tab active" data-tab="routine">Daily routine</button><button class="tab"
+                data-tab="tonight">Tonight's dinner 💗</button><button class="tab" data-tab="recipes">Quick
+                recipes</button><button class="tab" data-tab="dinner">My dinner recipes</button><button class="tab"
+                data-tab="prep">3-day prep</button></nav>
+        <section id="routine" class="panel">
+            <div class="card">
+                <h2>My Babies little care checklist 🌷</h2>
+                <div id="meals"></div>
+            </div>
+            <div class="card">
+                <h2>Little love notes for Maa 💌</h2>
+                <p class="muted">Enable scheduled push reminders on this phone. This needs the deployed reminder service
+                    and HTTPS.</p><label for="pushApi">Reminder service URL</label><input id="pushApi"
+                    placeholder="https://your-reminder-api.onrender.com"><label for="pushName">Device label
+                    (optional)</label><input id="pushName" placeholder="His Android phone"><button class="btn"
+                    id="enablePush">Send me sweet reminders</button> <button class="btn alt" id="disablePush">Turn
+                    reminders off</button>
+                <p class="small" id="pushStatus" aria-live="polite">Install this website on Android and allow
+                    notifications.</p>
+            </div>
+            <div class="card">
+                <h2>Android reminder setup 📱</h2>
+                <p class="muted">This website cannot reliably ring alarms when closed. Set repeating alarms in Android
+                    Clock.</p>
+                <div class="grid">
+                    <div><b>7:30 AM</b>
+                        <p class="muted">Breakfast — YogaBar chocolate oats 🍫</p>
+                    </div>
+                    <div><b>1:00 PM</b>
+                        <p class="muted">Lunch with a protein source</p>
+                    </div>
+                    <div><b>4:30 PM</b>
+                        <p class="muted">Banana + peanuts or roasted chana</p>
+                    </div>
+                    <div><b>7:30 PM</b>
+                        <p class="muted">Cook one fresh dinner</p>
+                    </div>
+                    <div><b>10:15 PM</b>
+                        <p class="muted">Portion tomorrow's dry ingredients</p>
+                    </div>
+                    <div><b>10:45 PM</b>
+                        <p class="muted">Wind down for sleep 🌙</p>
+                    </div>
+                </div><button class="btn alt" id="copyAlarms">Copy reminder labels</button>
+            </div>
+        </section>
+        <section id="tonight" class="panel hidden">
+            <div class="card">
+                <div class="eyebrow">Two-minute dinner decision 💌</div>
+                <h2>Maa, what sounds good tonight?</h2>
+                <p class="muted" id="dayNote"></p>
+                <div class="grid">
+                    <div><label for="mealType">What are you in the mood for?</label><select id="mealType">
+                            <option value="all">Anything / surprise me</option>
+                            <option value="rice">Rice bowl</option>
+                            <option value="roti">Roti / bread</option>
+                            <option value="onepan">One-pan quick meal</option>
+                            <option value="oats">Oats</option>
+                        </select></div>
+                </div>
+                <div id="recipeChoices" class="grid" style="margin-top:12px"></div>
+            </div>
+            <div class="card hidden" id="chosenCard">
+                <div class="eyebrow">Your dinner plan 🌷</div>
+                <h2 id="chosenTitle"></h2>
+                <p class="muted" id="chosenMeta"></p><b>Ingredients for one</b>
+                <ul id="chosenIngredients"></ul><b>Do you have everything at home, Maa?</b>
+                <p class="muted">Tick what you already have. Anything left unticked becomes your shopping list.</p>
+                <div id="ingredientChecks"></div>
+                <div class="quote" id="missingBox"></div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><button class="btn"
+                        id="confirmDinner">Let's cook 💗</button><button class="btn alt" id="copyMissing">Copy shopping
+                        list 🛒</button></div>
+                <div id="cookSteps" class="hidden" style="margin-top:16px">
+                    <h3>Let's cook, one easy step at a time 🍳</h3>
+                    <ol id="chosenSteps"></ol>
+                    <p class="small">Cook one serving fresh. Buy chilled ingredients close to cooking time if you don't
+                        have a fridge.</p>
+                </div>
+            </div>
+        </section>
+        <section id="recipes" class="panel hidden">
+            <div class="card">
+                <div class="tag">HIS FAVOURITE · NO CHANGES</div>
+                <h2>YogaBar Chocolate Oats 🍫</h2>
+                <p>Breakfast is decided: keep his favourite YogaBar chocolate oats exactly as he likes them. No
+                    alternate oats recipes.</p>
+                <ul>
+                    <li>Use the serving size on the packet.</li>
+                    <li>Prepare with water or freshly opened single-serving milk, as he prefers.</li>
+                    <li>Optional: banana or peanut butter on the side if he wants extra energy.</li>
+                </ul>
+                <p class="small">Don't save prepared oats or opened milk for later without refrigeration.</p>
+            </div>
+            <div class="grid" id="recipesGrid"></div>
+            <div class="safe"><b>Food safety:</b> cook chicken and eggs fresh and eat promptly. Do not keep cooked rice,
+                meat, eggs or other perishable leftovers at room temperature for another meal.</div>
+        </section>
+        <section id="dinner" class="panel hidden">
+            <div class="card">
+                <h2>Your dinner recipe book 🍲</h2>
+                <p class="muted">Add your own recipes here. They save in this browser on this device.</p><label>Recipe
+                    name</label><input id="rname" placeholder="e.g. Pepper chicken and rice"><label>Cooking
+                    time</label><input id="rtime" placeholder="e.g. 15–20 minutes"><label>Ingredients (one per
+                    line)</label><textarea id="ring"
+                    placeholder="150 g chicken&#10;Rice&#10;Pepper, garlic, oil"></textarea><label>Steps</label><textarea
+                    id="rsteps" placeholder="1. Prepare ingredients&#10;2. Cook thoroughly"></textarea><button
+                    class="btn" id="save">Save my recipe</button>
+            </div>
+            <div class="grid" id="custom"></div>
+        </section>
+        <section id="prep" class="panel hidden">
+            <div class="card">
+                <h2>3-day ready-to-cook prep 🥣</h2>
+                <p class="muted">Prepare dry ingredient packs—not cooked meals. Cook fresh when hungry.</p>
+                <div id="prepList"></div>
+            </div>
+            <div class="card">
+                <h2>Pantry shopping list</h2>
+                <div id="shopping"></div><button class="btn alt" id="copyShopping">Copy shopping list</button>
+            </div>
+            <div class="safe"><b>No fridge = no cooked-meal storage.</b> Keep dry ingredients sealed, cool and dry. Buy
+                raw chicken only if it can stay properly chilled until cooking. Consume opened milk immediately. Follow
+                package storage instructions.</div>
+        </section>
+    </main>
+    <footer>Made with love 💛 · A routine helper, not medical advice.</footer>
+    <script>
+
+        const vegBases = [
+            { name: "Soy masala rice bowl", type: "rice", time: 18, cost: "₹35–60", protein: 27, kcal: 520, ing: ["50 g dry soy chunks", "75 g uncooked rice", "½ onion", "1 tomato", "1 tsp oil", "Salt, chilli, turmeric"], steps: ["Cook rice fresh.", "Boil soy chunks as directed and drain.", "Sauté onion and tomato with spices and oil.", "Add soy and a splash of water; simmer 5 minutes and serve over rice."] },
+            { name: "Paneer bhurji toast", type: "roti", time: 12, cost: "₹45–75", protein: 24, kcal: 560, ing: ["100 g paneer", "2–3 slices bread or 2 rotis", "½ onion", "1 tomato", "1 tsp oil", "Salt and garam masala"], steps: ["Crumble paneer.", "Sauté onion, tomato and spices.", "Add paneer and cook 3–4 minutes.", "Serve with toast or rotis."] },
+            { name: "Besan chilla + curd", type: "onepan", time: 15, cost: "₹25–45", protein: 20, kcal: 470, ing: ["80 g besan", "100 g curd", "½ onion", "Water", "1 tsp oil", "Salt, chilli and cumin"], steps: ["Mix besan, onion, spices and water into batter.", "Cook thin chillas on an oiled pan on both sides.", "Serve with curd."] },
+            { name: "Dal rice power bowl", type: "rice", time: 15, cost: "₹25–45", protein: 19, kcal: 540, ing: ["¾ cup freshly cooked dal", "75 g uncooked rice", "1 tsp oil or ghee", "Spices"], steps: ["Cook rice fresh.", "Prepare dal and heat thoroughly.", "Add a little ghee or oil if desired.", "Serve together."] },
+            { name: "Peanut masala noodles", type: "onepan", time: 12, cost: "₹25–45", protein: 16, kcal: 590, ing: ["1 serving noodles", "2 tbsp peanuts", "½ onion", "Quick-cooking vegetables", "1 tsp oil", "Chilli and salt"], steps: ["Cook noodles according to packet directions.", "Sauté onion and vegetables.", "Add noodles, crushed peanuts and seasoning.", "Toss well and eat fresh."] },
+            { name: "Soya keema roti wrap", type: "roti", time: 18, cost: "₹30–55", protein: 25, kcal: 500, ing: ["50 g dry soy granules/chunks", "2 rotis", "½ onion", "1 tomato", "1 tsp oil", "Spices"], steps: ["Boil soy as directed and drain.", "Sauté onion, tomato and spices.", "Add soy and cook until flavours combine.", "Wrap in fresh rotis."] },
+            { name: "Chana rice bowl", type: "rice", time: 12, cost: "₹30–55", protein: 17, kcal: 560, ing: ["1 cup cooked chickpeas", "75 g uncooked rice", "½ onion", "1 tsp oil", "Cumin and salt"], steps: ["Cook rice fresh.", "Sauté onion and spices.", "Add chickpeas and a splash of water; simmer 5 minutes.", "Serve over rice."] },
+            { name: "Paneer peanut noodles", type: "onepan", time: 15, cost: "₹50–80", protein: 25, kcal: 650, ing: ["80 g paneer", "1 serving noodles", "1 tbsp peanuts", "Vegetables", "1 tsp oil", "Salt"], steps: ["Cook noodles according to packet.", "Pan-cook paneer and vegetables with oil.", "Toss noodles through the pan and top with peanuts."] },
+            { name: "Besan potato wrap", type: "roti", time: 15, cost: "₹20–40", protein: 14, kcal: 500, ing: ["2 rotis", "1 small potato", "40 g besan", "½ onion", "1 tsp oil", "Spices"], steps: ["Cook potato until soft.", "Make a thick besan chilla with onion and spices.", "Add spiced potato and wrap in rotis."] },
+            { name: "Curd rice + roasted chana", type: "rice", time: 8, cost: "₹20–40", protein: 15, kcal: 510, ing: ["1 cup freshly cooked rice", "150 g curd", "30 g roasted chana", "Salt and cumin"], steps: ["Mix freshly cooked rice with curd just before eating.", "Top with roasted chana and cumin.", "Eat immediately; do not store without refrigeration."] }
+        ]
+        const nonvegBases = [
+            { name: "Egg bhurji rice bowl", type: "rice", time: 12, cost: "₹25–45", protein: 23, kcal: 560, ing: ["3 eggs", "75 g uncooked rice", "½ onion", "1 tomato", "1 tsp oil", "Salt and spices"], steps: ["Cook rice fresh.", "Sauté onion, tomato and spices.", "Add beaten eggs and scramble until fully cooked.", "Serve over rice."] },
+            { name: "Chicken pepper rice", type: "rice", time: 20, cost: "₹55–90", protein: 36, kcal: 590, ing: ["150 g boneless chicken", "75 g uncooked rice", "Garlic and pepper", "1–2 tsp oil", "Salt"], steps: ["Cook rice fresh.", "Sauté garlic and pepper in oil.", "Add small chicken pieces and cook completely through.", "Serve with rice."] },
+            { name: "Chicken egg roll", type: "roti", time: 18, cost: "₹55–90", protein: 38, kcal: 570, ing: ["100 g chicken pieces", "1 egg", "2 rotis", "½ onion", "Spices and 1 tsp oil"], steps: ["Cook chicken pieces with spices until fully cooked.", "Cook egg as an omelette.", "Fill rotis with chicken, egg and onion; roll and eat fresh."] },
+            { name: "Masala omelette toast", type: "roti", time: 10, cost: "₹20–40", protein: 25, kcal: 510, ing: ["3 eggs", "3 slices bread", "½ onion", "1 tsp oil", "Salt and pepper"], steps: ["Beat eggs with onion and seasoning.", "Cook omelette fully.", "Serve with toast."] },
+            { name: "Tinned fish rice bowl", type: "rice", time: 10, cost: "₹45–90", protein: 25, kcal: 520, ing: ["1 small tin sardines or tuna", "75 g uncooked rice", "½ onion", "Lemon and pepper"], steps: ["Cook rice fresh.", "Follow the fish tin label directions.", "Mix fish with onion, lemon and pepper; serve with rice."] },
+            { name: "Chicken quick stir-fry", type: "onepan", time: 18, cost: "₹55–90", protein: 35, kcal: 480, ing: ["150 g boneless chicken", "Quick-cooking vegetables", "1 tsp oil", "Garlic, pepper and salt", "Rice or bread"], steps: ["Cut chicken into small pieces.", "Stir-fry with oil, garlic and seasoning until fully cooked.", "Add vegetables and cook until tender.", "Serve with fresh rice or bread."] },
+            { name: "Egg peanut noodles", type: "onepan", time: 12, cost: "₹25–45", protein: 23, kcal: 610, ing: ["1 serving noodles", "2 eggs", "1 tbsp peanuts", "½ onion", "1 tsp oil"], steps: ["Cook noodles according to packet directions.", "Scramble eggs fully.", "Sauté onion, add noodles, egg and peanuts, then toss."] },
+            { name: "Chicken besan chilla wrap", type: "roti", time: 18, cost: "₹45–80", protein: 35, kcal: 520, ing: ["100 g chicken", "50 g besan", "½ onion", "Water and spices", "1 tsp oil"], steps: ["Mix besan, onion, water and spices into batter.", "Cook a thin chilla on both sides.", "Cook chicken separately until fully cooked, then fill the chilla."] }
+        ]
+        const oatsBases = [
+            { name: "Chocolate banana oats bowl", type: "oats", time: 5, cost: "₹20–40", protein: 14, kcal: 500, ing: ["50 g oats", "1 banana", "1 tbsp peanut butter", "Milk or water, prepared fresh"], steps: ["Cook oats with milk or water according to packet.", "Stir in peanut butter.", "Top with banana and eat fresh."] },
+            { name: "Peanut butter banana oats", type: "oats", time: 5, cost: "₹20–40", protein: 16, kcal: 540, ing: ["50 g oats", "1 banana", "2 tbsp peanut butter", "Milk or water"], steps: ["Cook oats with milk or water.", "Stir in peanut butter.", "Top with banana."] },
+            { name: "Savoury masala oats + soy", type: "oats", time: 12, cost: "₹25–45", protein: 25, kcal: 480, ing: ["50 g oats", "25 g dry soy chunks", "½ onion", "Vegetables", "Spices and 1 tsp oil"], steps: ["Boil soy chunks as directed and drain.", "Sauté onion, vegetables and spices.", "Add oats, water and soy; simmer until cooked."] },
+            { name: "Egg savoury oats", type: "oats", time: 10, cost: "₹20–40", protein: 22, kcal: 460, ing: ["50 g oats", "2 eggs", "½ onion", "Salt, pepper and 1 tsp oil"], steps: ["Cook oats with water and seasoning.", "Scramble eggs with onion until fully cooked.", "Stir together and eat hot."] },
+            { name: "Curd peanut oats bowl", type: "oats", time: 5, cost: "₹20–35", protein: 17, kcal: 480, ing: ["50 g oats", "150 g curd", "25 g peanuts", "Salt or jaggery optional"], steps: ["Prepare oats according to packet directions.", "Mix with curd immediately before eating.", "Top with peanuts; eat immediately and do not store without refrigeration."] },
+            { name: "Oats besan chilla", type: "oats", time: 12, cost: "₹20–40", protein: 18, kcal: 450, ing: ["40 g oats, powdered", "40 g besan", "½ onion", "Water and spices", "1 tsp oil"], steps: ["Mix powdered oats, besan, onion, spices and water.", "Cook like a chilla on both sides.", "Serve fresh."] }
+        ]
+        const flavours = [["Garlic pepper", "garlic and black pepper"], ["South Indian masala", "curry leaves and mustard seed"], ["Chilli tomato", "tomato and chilli powder"], ["Cumin coriander", "cumin and coriander powder"], ["Ginger garlic", "ginger and garlic"], ["Lemon pepper", "lemon and black pepper"], ["Pav bhaji style", "pav bhaji masala"], ["Curry leaf chilli", "curry leaves and chilli"], ["Tandoori spice", "tandoori masala"], ["Homestyle", "turmeric and cumin"]]
+        function expandBases(bases, category) { const out = []; for (const b of bases) { out.push({ ...b, category }); for (const [f, spice] of flavours) out.push({ ...b, name: f + " " + b.name.toLowerCase(), category, ing: [...b.ing, "Flavour variation: " + spice], steps: [...b.steps, "Season this variation with " + spice + " to taste."] }) } return out }
+        const fullLibrary = [...expandBases(vegBases, "veg"), ...expandBases(nonvegBases, "nonveg"), ...expandBases(oatsBases, "oats")];
+
+        const meals = [["7:30 AM", "🍫", "Breakfast", "YogaBar chocolate oats—the one he loves."], ["10:30 AM", "🥜", "Morning snack", "Banana + peanuts or roasted chana."], ["1:00 PM", "🍛", "Lunch", "Rice/chapati + dal + protein + vegetables."], ["4:30 PM", "🍌", "Evening snack", "Peanut butter sandwich or chana + fruit."], ["7:30 PM", "🍲", "Fresh dinner", "Maa, take 2 minutes to choose tonight's dinner 💗"]];
+        const recipes = [
+            { name: "Chicken egg bhurji", time: "15–20 min", protein: "~35–45 g protein", kcal: "~400–500 kcal before sides", ingredients: ["100 g boneless chicken, finely chopped", "2 eggs", "Onion, tomato and spices", "1 tsp oil"], steps: ["Sauté onion, tomato and spices.", "Add chicken and cook thoroughly.", "Add eggs and scramble until fully cooked.", "Eat with fresh chapati or bread."] },
+            { name: "Three-egg omelette + toast", time: "8–10 min", protein: "~25–30 g protein", kcal: "~450–550 kcal", ingredients: ["3 eggs", "3 slices bread", "Onion, chilli and pepper", "1 tsp oil"], steps: ["Beat eggs with onion and spices.", "Cook the omelette fully.", "Toast bread and serve."] },
+            { name: "Pepper chicken + rice", time: "15–25 min", protein: "~35–45 g protein", kcal: "~500–650 kcal", ingredients: ["150 g boneless chicken, small pieces", "Rice, cooked fresh", "Garlic, pepper and spices", "1–2 tsp oil"], steps: ["Sauté garlic and spices.", "Add chicken and cook thoroughly; time depends on piece size.", "Serve with freshly cooked rice."] },
+            { name: "Soy masala + rice", time: "15–20 min", protein: "~25–35 g protein", kcal: "~450–600 kcal", ingredients: ["50 g dry soy chunks", "Rice", "Onion, tomato and spices", "1–2 tsp oil"], steps: ["Boil soy chunks as directed and drain.", "Sauté onion, tomato and spices.", "Add soy chunks and simmer.", "Serve with fresh rice."] },
+            { name: "Besan chilla + roasted chana", time: "10–15 min", protein: "~20–25 g protein", kcal: "~450–550 kcal", ingredients: ["100 g besan", "40 g roasted chana on the side", "Onion, spices and water", "A little oil"], steps: ["Mix besan, water, onion and spices into batter.", "Cook both sides in a lightly oiled pan.", "Eat with roasted chana."] }
+        ];
+
+        function isVegDay() { const d = new Date().getDay(); return d === 1 || d === 4 }
+        function availableRecipes() { return fullLibrary.filter(r => r.category === "veg" || r.category === "oats" || (!isVegDay() && r.category === "nonveg")) }
+        function renderTonight() {
+            document.getElementById("dayNote").textContent = isVegDay() ? "It's a vegetarian day today, Maa 🌿 Only vegetarian dinner ideas today. Choose what sounds good." : "Choose a vegetarian or non-vegetarian dinner, Maa 💗 Simple, filling, affordable ideas.";
+            const filter = document.getElementById("mealType").value;
+            const list = availableRecipes().filter(r => filter === "all" || (filter === "oats" ? r.category === "oats" : r.type === filter));
+            document.getElementById("recipeChoices").innerHTML = list.map(r => `<article class="recipe"><div class="tag">${r.time} min · ${r.category === "nonveg" ? "NON-VEG" : "VEG"} · ${r.cost}</div><h3>${esc(r.name)}</h3><p class="muted">Approx. ${r.protein} g protein · ${r.kcal} kcal</p><button class="btn" data-pick="${fullLibrary.indexOf(r)}">Choose this dinner 💗</button></article>`).join("");
+            document.querySelectorAll("[data-pick]").forEach(b => b.onclick = () => chooseDinner(fullLibrary[+b.dataset.pick]));
+        }
+        let selectedDinner = null;
+        function chooseDinner(r) {
+            selectedDinner = r; document.getElementById("chosenCard").classList.remove("hidden");
+            document.getElementById("chosenTitle").textContent = r.name + " 💗";
+            document.getElementById("chosenMeta").textContent = `${r.time} min · approx. ${r.protein} g protein · ${r.kcal} kcal · ${r.cost} per serving`;
+            document.getElementById("chosenIngredients").innerHTML = r.ing.map(x => `<li>${esc(x)}</li>`).join("");
+            document.getElementById("ingredientChecks").innerHTML = r.ing.filter(x => !x.startsWith("Flavour variation:")).map((x, i) => `<label style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line)"><input type="checkbox" class="check" data-have="${i}"><span>${esc(x)}</span></label>`).join("");
+            document.getElementById("chosenSteps").innerHTML = r.steps.map(s => `<li>${esc(s)}</li>`).join("");
+            document.getElementById("cookSteps").classList.add("hidden"); document.querySelectorAll("[data-have]").forEach(x => x.onchange = updateMissing); updateMissing();
+            document.getElementById("chosenCard").scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        function missingItems() { return [...document.querySelectorAll("[data-have]")].filter(x => !x.checked).map(x => x.parentElement.querySelector("span").textContent) }
+        function updateMissing() { const m = missingItems(); document.getElementById("missingBox").textContent = m.length ? "Still to get: " + m.join(", ") + ". No stress, Maa—pick these up before cooking. 💛" : "You have all the ingredients, Maa! Lovely—you're ready to cook. 💗" }
+        document.getElementById("mealType").onchange = renderTonight;
+        document.getElementById("confirmDinner").onclick = () => { document.getElementById("cookSteps").classList.remove("hidden"); document.getElementById("cookSteps").scrollIntoView({ behavior: "smooth", block: "nearest" }) };
+        document.getElementById("copyMissing").onclick = () => copy("Shopping list for Maa 💛\nDinner: " + (selectedDinner ? selectedDinner.name : "") + "\n" + (missingItems().length ? missingItems().map(x => "☐ " + x).join("\n") : "I have everything already!"));
+
+        const prep = [["Day 1 dry pack", "Portion soy chunks and spices in a labelled dry container."], ["Day 2 dry pack", "Portion besan and spices; keep roasted chana sealed."], ["Day 3 dry pack", "Portion soy chunks, rice and spices separately."], ["Every evening", "Check tomorrow's ingredients and buy fresh perishables as needed."], ["Keep it safe", "Don't leave cooked meals out for later. Cook one serving and eat fresh."]];
+        const shopping = ["YogaBar chocolate oats (his preferred pack)", "Dry soy chunks", "Besan / gram flour", "Rice or chapati ingredients", "Roasted chana and peanuts", "Peanut butter", "Bananas / whole fruit", "Spices in small sealed packs", "Fresh eggs or chicken only when safe to store and cook immediately", "Single-serve shelf-stable milk, if wanted"];
+        const esc = s => String(s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+        const copy = t => { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(() => alert("Copied 💛")).catch(() => prompt("Copy this text", t)); else prompt("Copy this text", t) };
+        const key = () => { let d = new Date(); return "fuel-check-" + d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() };
+        const load = () => { try { return JSON.parse(localStorage.getItem(key()) || "{}") } catch (e) { return {} } };
+        function progress() { let s = load(), n = meals.filter((m, i) => s[i]).length; document.getElementById("progressText").textContent = n + " of " + meals.length; document.getElementById("bar").style.width = (n / meals.length * 100) + "%" }
+        function renderMeals() { let s = load(); document.getElementById("meals").innerHTML = meals.map((m, i) => `<div class="meal"><div class="emoji">${m[1]}</div><div><div class="time">${m[0]}</div><b>${m[2]}</b><div class="muted">${m[3]}</div></div><input class="check" type="checkbox" data-check="${i}" ${s[i] ? "checked" : ""} aria-label="Mark ${m[2]} done"></div>`).join(""); document.querySelectorAll("[data-check]").forEach(x => x.onchange = () => { let a = load(); a[x.dataset.check] = x.checked; localStorage.setItem(key(), JSON.stringify(a)); progress() }); progress() }
+        function renderRecipes() { document.getElementById("recipesGrid").innerHTML = recipes.map((r, i) => `<article class="recipe"><div class="tag">${r.time} · ${r.protein}</div><h3>${r.name}</h3><p class="muted">${r.kcal}</p><b>Ingredients</b><ul>${r.ingredients.map(x => "<li>" + esc(x) + "</li>").join("")}</ul><b>Method</b><ol>${r.steps.map(x => "<li>" + esc(x) + "</li>").join("")}</ol><button class="btn alt" data-copy="${i}">Copy recipe</button></article>`).join(""); document.querySelectorAll("[data-copy]").forEach(b => b.onclick = () => { let r = recipes[b.dataset.copy]; copy(r.name + "\n" + r.ingredients.join("\n") + "\nMethod:\n" + r.steps.join("\n")) }) }
+        function customList() { try { return JSON.parse(localStorage.getItem("fuel-custom") || "[]") } catch (e) { return [] } }
+        function renderCustom() { let a = customList(); document.getElementById("custom").innerHTML = a.length ? a.map((r, i) => `<article class="recipe"><div class="tag">${esc(r.time)}</div><h3>${esc(r.name)}</h3><p style="white-space:pre-line">${esc(r.ingredients)}</p><p style="white-space:pre-line">${esc(r.steps)}</p><button class="btn alt" data-del="${i}">Delete</button></article>`).join("") : '<p class="muted">Your saved dinner recipes will show here.</p>'; document.querySelectorAll("[data-del]").forEach(b => b.onclick = () => { let x = customList(); x.splice(+b.dataset.del, 1); localStorage.setItem("fuel-custom", JSON.stringify(x)); renderCustom() }) }
+        document.querySelectorAll(".tab").forEach(b => b.onclick = () => { document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t === b)); document.querySelectorAll(".panel").forEach(p => p.classList.toggle("hidden", p.id !== b.dataset.tab)) });
+        document.getElementById("reset").onclick = () => { if (confirm("Reset today's checklist?")) { localStorage.removeItem(key()); renderMeals() } };
+        document.getElementById("copyAlarms").onclick = () => copy("7:30 AM — Breakfast: YogaBar chocolate oats\n1:00 PM — Lunch with protein\n4:30 PM — Banana + peanuts/roasted chana\n7:00 PM — Maa, take 2 minutes to choose tonight's dinner 💗\n7:30 PM — Cook fresh dinner\n10:15 PM — Prep tomorrow's dry ingredients\n10:45 PM — Wind down");
+        document.getElementById("save").onclick = () => { let r = { name: document.getElementById("rname").value.trim(), time: document.getElementById("rtime").value.trim() || "Quick dinner", ingredients: document.getElementById("ring").value.trim(), steps: document.getElementById("rsteps").value.trim() }; if (!r.name) { alert("Add a recipe name first."); return } let a = customList(); a.push(r); localStorage.setItem("fuel-custom", JSON.stringify(a));["rname", "rtime", "ring", "rsteps"].forEach(id => document.getElementById(id).value = ""); renderCustom(); alert("Recipe saved on this device 💛") };
+        document.getElementById("copyShopping").onclick = () => copy(shopping.map(x => "☐ " + x).join("\n"));
+        document.getElementById("prepList").innerHTML = prep.map((p, i) => `<div class="meal"><div class="emoji">${i < 3 ? "🥣" : "✓"}</div><div><b>${p[0]}</b><div class="muted">${p[1]}</div></div><input class="check" type="checkbox" aria-label="${p[0]}"></div>`).join("");
+        document.getElementById("shopping").innerHTML = shopping.map(x => `<div class="meal"><div class="emoji">🛒</div><div>${esc(x)}</div><input class="check" type="checkbox" aria-label="${esc(x)}"></div>`).join("");
+        function tick() { let d = new Date(), h = d.getHours(); document.getElementById("clock").textContent = d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }); document.getElementById("greeting").textContent = h < 11 ? "Good morning! Start with his favourite chocolate oats." : h < 16 ? "Hope lunch is sorted—remember to eat properly." : h < 20 ? "Snack, then make a fresh quick dinner." : "Prep tomorrow's ingredients and wind down." }
+        renderMeals(); renderRecipes(); renderCustom(); renderTonight(); tick(); setInterval(tick, 60000);
+
+        const apiInput = document.getElementById("pushApi"), nameInput = document.getElementById("pushName"), statusEl = document.getElementById("pushStatus");
+        apiInput.value = localStorage.getItem("fuel-push-api") || ""; nameInput.value = localStorage.getItem("fuel-push-device") || "";
+        function pushStatus(s) { statusEl.textContent = s }
+        function b64bytes(s) { const p = "=".repeat((4 - s.length % 4) % 4), b = atob((s + p).replace(/-/g, "+").replace(/_/g, "/")); return Uint8Array.from([...b].map(c => c.charCodeAt(0))) }
+        async function postJson(url, body) { const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }); const d = await r.json().catch(() => ({})); if (!r.ok) throw Error(d.error || "Request failed"); return d }
+        document.getElementById("enablePush").onclick = async () => {
+            try {
+                const api = apiInput.value.trim().replace(/\/+$/, ""); if (!api) throw Error("Enter the deployed reminder service URL first.");
+                if (!window.isSecureContext) throw Error("The website must be hosted on HTTPS.");
+                if (!("serviceWorker" in navigator) || !("PushManager" in window) || !("Notification" in window)) throw Error("Use a current version of Chrome on Android.");
+                localStorage.setItem("fuel-push-api", api); localStorage.setItem("fuel-push-device", nameInput.value.trim());
+                pushStatus("Requesting permission…"); if (await Notification.requestPermission() !== "granted") throw Error("Notification permission was not granted.");
+                const reg = await navigator.serviceWorker.register("/sw.js"); await navigator.serviceWorker.ready;
+                const k = await fetch(api + "/vapid-public-key"); if (!k.ok) throw Error("Cannot get push key. Check the API URL and deployment.");
+                const { publicKey } = await k.json(); let sub = await reg.pushManager.getSubscription();
+                if (!sub) sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64bytes(publicKey) });
+                await postJson(api + "/subscribe", { subscription: sub, device: nameInput.value.trim() || "Android phone", timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Kolkata" });
+                pushStatus("Subscribed 💛 You're all set, Maa 💛 Little love notes will find you here.");
+            } catch (e) { pushStatus("Could not enable notifications: " + e.message) }
+        };
+        document.getElementById("disablePush").onclick = async () => { try { const api = apiInput.value.trim().replace(/\/+$/, ""), reg = await navigator.serviceWorker.getRegistration("/"), sub = reg && await reg.pushManager.getSubscription(); if (sub) { if (api) await postJson(api + "/unsubscribe", { endpoint: sub.endpoint }).catch(() => { }); await sub.unsubscribe() } pushStatus("This browser is unsubscribed.") } catch (e) { pushStatus("Could not unsubscribe: " + e.message) } };
+        if ("serviceWorker" in navigator && window.isSecureContext) navigator.serviceWorker.register("/sw.js").catch(() => { });
+
+    </script>
+</body>
+
+</html>

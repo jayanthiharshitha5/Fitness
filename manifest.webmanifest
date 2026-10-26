@@ -1,0 +1,17 @@
+{
+  "name": "For Maa, With Love",
+  "short_name": "For Maa",
+  "description": "Gentle meal and rest reminders, made with love for Maa.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff8f3",
+  "theme_color": "#7a9276",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
